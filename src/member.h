@@ -10,4 +10,4 @@ struct Member {
     string expiryDate;
     int assignedTrainerId;
     bool isExpired;
-};k
+};
