@@ -3,3 +3,4 @@ src/member
 *.out
 gym
 
+.DS_Store
