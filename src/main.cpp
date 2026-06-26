@@ -4,6 +4,8 @@ using namespace std;
 
 extern void addMember();
 extern void viewMembers();
+extern void removeMember(int id);
+extern void markAttendance(int id);
 extern void saveMembers();
 extern void loadMembers();
 extern void initTrainers();
@@ -19,10 +21,12 @@ int main() {
         cout << "\n=== Gym Management System ===\n";
         cout << "1. Add Member\n";
         cout << "2. View Members\n";
-        cout << "3. Assign Trainer\n";
-        cout << "4. View Trainers\n";
-        cout << "5. Check Expired Memberships\n";
-        cout << "6. Exit\n";
+        cout << "3. Remove Member\n";
+        cout << "4. Mark Attendance\n";
+        cout << "5. Assign Trainer\n";
+        cout << "6. View Trainers\n";
+        cout << "7. Check Expired Memberships\n";
+        cout << "8. Exit\n";
         cout << "Choice: ";
 
         int choice;
@@ -32,18 +36,27 @@ int main() {
         else if (choice == 2) viewMembers();
         else if (choice == 3) {
             int id;
+            cout << "Enter member ID to remove: ";
+            cin >> id;
+            removeMember(id);
+            saveMembers();
+        }
+        else if (choice == 4) {
+            int id;
+            cout << "Enter member ID: ";
+            cin >> id;
+            markAttendance(id);
+        }
+        else if (choice == 5) {
+            int id;
             cout << "Enter member ID: ";
             cin >> id;
             assignTrainer(id);
             saveMembers();
         }
-        else if (choice == 4) viewTrainers();
-        else if (choice == 5) checkExpiry();
-        else if (choice == 6) break;
+        else if (choice == 6) viewTrainers();
+        else if (choice == 7) checkExpiry();
+        else if (choice == 8) break;
     }
     return 0;
 }
-
-
-
-

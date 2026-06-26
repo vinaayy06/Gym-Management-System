@@ -1,8 +1,6 @@
 #include "member.h"
 #include <vector>
 #include <iostream>
-#include <fstream>
-#include <sstream>
 using namespace std;
 
 vector<Member> members;
@@ -32,11 +30,32 @@ void viewMembers() {
     }
     for (auto& m : members) {
         cout << "ID: " << m.id
-                  << " | " << m.name
-                  << " | Age: " << m.age
-                  << " | " << m.membershipType
-                  << " | Expires: " << m.expiryDate
-                  << (m.isExpired ? " [EXPIRED]" : "")
-                  << "\n";
+             << " | " << m.name
+             << " | Age: " << m.age
+             << " | " << m.membershipType
+             << " | Expires: " << m.expiryDate
+             << (m.isExpired ? " [EXPIRED]" : "")
+             << "\n";
     }
+}
+
+void removeMember(int id) {
+    for (auto it = members.begin(); it != members.end(); ++it) {
+        if (it->id == id) {
+            cout << "Member " << it->name << " removed.\n";
+            members.erase(it);
+            return;
+        }
+    }
+    cout << "Member not found.\n";
+}
+
+void markAttendance(int id) {
+    for (auto& m : members) {
+        if (m.id == id) {
+            cout << "Attendance marked for " << m.name << ".\n";
+            return;
+        }
+    }
+    cout << "Member not found.\n";
 }
