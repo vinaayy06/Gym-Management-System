@@ -12,11 +12,14 @@ extern void initTrainers();
 extern void assignTrainer(int memberId);
 extern void viewTrainers();
 extern void checkExpiry();
+extern void saveTrainers();
+extern void loadTrainers();
 
 int main() {
     loadMembers();
+    loadTrainers();
+    if (trainers.empty()) initTrainers();
     checkExpiry();
-    initTrainers();
     while (true) {
         cout << "\n=== Gym Management System ===\n";
         cout << "1. Add Member\n";
@@ -53,6 +56,7 @@ int main() {
             cin >> id;
             assignTrainer(id);
             saveMembers();
+            saveTrainers();
         }
         else if (choice == 6) viewTrainers();
         else if (choice == 7) checkExpiry();
